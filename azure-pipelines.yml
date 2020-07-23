@@ -11,7 +11,10 @@ pool: PodmanAgents
 steps:
 - script: echo Hello, world!
   displayName: 'Run a one-line script'
-
+- task: Docker@2
+  inputs:
+    containerRegistry: 'sgan_registry'
+    command: 'login'
 - script: |
     echo Add other tasks to build, test, and deploy your project.
     echo See https://aka.ms/yaml
