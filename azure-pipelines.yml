@@ -12,14 +12,20 @@ resources:
     - container: build
       image: registry.apps.southerngreensactionnetwork.org/sgan/containers/doctl_container:latest
       endpoint: sgan_registry
-steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
-- task: Docker@2
-  inputs:
-    containerRegistry: 'sgan_registry'
-    command: 'login'
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
+variables:
+  - name: tests
+    value: tests
+stages:
+  - stage: DeployConstituentToolsContainer
+    displayName: Deploy Constituent Tools Container
+    jobs:
+      - deployment: DeployConstituentToolsContainer
+        displayName: Deploy Constituent Tools Container
+        environment: digitalocean
+        pool: PodmanAgents
+        container: build
+        strategy:
+          runOnce:
+            deploy:
+              steps:
+                - template: .template.yml
