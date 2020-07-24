@@ -3,11 +3,20 @@ steps:
   - checkout: self
   - script: echo Hello, world!
     displayName: 'Run a one-line script'
-  - task: Docker@2
-    inputs:
-      containerRegistry: 'sgan_registry'
-      command: 'login'
   - script: |
       echo Add other tasks to build, test, and deploy your project.
       echo See https://aka.ms/yaml
     displayName: 'Run a multi-line script'
+  - task: Docker@2
+    inputs:
+      containerRegistry: 'sgan_registry'
+      command: 'login'
+  - task: Docker@2
+    displayName: Build Container
+    inputs:
+      containerRegistry: 'sgan_registry'
+      repository: $(containerPath)/$(Build.Repository.Name)
+      arguments: --build-arg DIGITALOCEAN_ACCESS_TOKEN=$(DIGITALOCEAN_ACCESS_TOKEN)
+      command: 'build'
+      tags: |
+        latest

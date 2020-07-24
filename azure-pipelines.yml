@@ -7,15 +7,16 @@ trigger:
 - master
 
 pool: PodmanAgents
+variables:
+  - name: containerPath
+    value: sgan/containers/core
+  - group: DigitalOcean
 resources:
   containers:
     - container: build
       image: registry.apps.southerngreensactionnetwork.org/sgan/containers/doctl_container:latest
       endpoint: sgan_registry
-      options: --entrypoint=""
-variables:
-  - name: tests
-    value: tests
+      options: --entrypoint="" -e DIGITALOCEAN_ACCESS_TOKEN=$(DIGITALOCEAN_ACCESS_TOKEN)
 stages:
   - stage: DeployConstituentToolsContainer
     displayName: Deploy Constituent Tools Container
