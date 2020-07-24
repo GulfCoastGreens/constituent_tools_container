@@ -1,0 +1,1 @@
+\copy public.florida_voter_import from '/data/voter_tmp.txt' with (format csv, delimiter E'\t')

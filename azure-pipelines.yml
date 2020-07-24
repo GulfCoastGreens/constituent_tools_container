@@ -11,12 +11,19 @@ variables:
   - name: containerPath
     value: sgan/containers/core
   - group: DigitalOcean
+  - group: usvoters_pg
 resources:
   containers:
     - container: build
       image: registry.apps.southerngreensactionnetwork.org/sgan/containers/doctl_container:latest
       endpoint: sgan_registry
-      options: --entrypoint="" -e DIGITALOCEAN_ACCESS_TOKEN=$(DIGITALOCEAN_ACCESS_TOKEN)
+      options: --entrypoint=""
+      env:
+        DIGITALOCEAN_ACCESS_TOKEN: $(DIGITALOCEAN_ACCESS_TOKEN)
+        PG_DATABASE: $(PG_DATABASE)
+        PG_HOST: $(PG_HOST)
+        PG_PASSWORD: $(PG_PASSWORD)
+        PG_PORT: $(PG_PORT)
 stages:
   - stage: DeployConstituentToolsContainer
     displayName: Deploy Constituent Tools Container

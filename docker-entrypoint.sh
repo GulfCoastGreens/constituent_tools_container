@@ -11,4 +11,4 @@ set -e
 #     exec gosu postgres "$@"
 # fi
 
-exec /dist/pyvotertools "$@"
+exec /dist/constituent_tools "$@"
