@@ -6,6 +6,8 @@ ENV DIGITALOCEAN_ACCESS_TOKEN=${DIGITALOCEAN_ACCESS_TOKEN}
 COPY src src
 COPY requirements.txt .
 
+RUN echo "\nnameserver 8.8.8.8" >> /etc/resolv.conf
+
 RUN pip3 install -r requirements.txt
 RUN pyinstaller -F src/constituent_tools.py --add-data 'src/florida/sql/*.sql:florida/sql'
 # RUN ls -all /dist
