@@ -6,6 +6,7 @@ ENV DIGITALOCEAN_ACCESS_TOKEN=${DIGITALOCEAN_ACCESS_TOKEN}
 COPY src src
 COPY requirements.txt .
 
+RUN pip install --upgrade -v pip
 RUN pip install -r requirements.txt
 RUN pyinstaller -F src/constituent_tools.py --add-data 'src/florida/sql/*.sql:florida/sql'
 # RUN ls -all /dist
