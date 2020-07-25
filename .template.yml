@@ -9,23 +9,23 @@ steps:
     displayName: 'Run a multi-line script'
   - task: Docker@2
     inputs:
-      containerRegistry: 'dh_registry'
+      containerRegistry: 'gl_registry'
       command: 'login'
-    displayName: Login to Registry
+    displayName: Login to registry
   - task: Docker@2
     displayName: Build Container
     inputs:
-      containerRegistry: 'dh_registry'
-      repository: jamjon3/sgan
+      containerRegistry: 'gl_registry'
+      repository: $(containerPath)/$(Build.Repository.Name)
       arguments: --network=host --build-arg DIGITALOCEAN_ACCESS_TOKEN=$(DIGITALOCEAN_ACCESS_TOKEN)
       command: 'build'
       tags: |
-        $(Build.Repository.Name)-latest
+        latest
   - task: Docker@2
     displayName: Push Container
     inputs:
-      containerRegistry: 'dh_registry'
-      repository: jamjon3/sgan
+      containerRegistry: 'gl_registry'
+      repository: $(containerPath)/$(Build.Repository.Name)
       command: push
       tags: |
-        (Build.Repository.Name)-latest
+        latest
