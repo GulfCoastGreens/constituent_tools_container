@@ -8,7 +8,8 @@ COPY requirements.txt .
 
 # RUN echo "\nnameserver 8.8.8.8" >> /etc/resolv.conf
 
-RUN pip install --trusted-host pypi.org --trusted-host files.pythonhosted.org -r requirements.txt
+RUN pip install pyinstaller
+RUN pip install -r requirements.txt
 RUN pyinstaller -F src/constituent_tools.py --add-data 'src/florida/sql/*.sql:florida/sql'
 # RUN ls -all /dist
 # RUN ls /bin
