@@ -20,7 +20,7 @@ steps:
       arguments: --network=host --build-arg DIGITALOCEAN_ACCESS_TOKEN=$(DIGITALOCEAN_ACCESS_TOKEN)
       command: 'build'
       tags: |
-        $(containerPath)-$(Build.Repository.Name)-latest
+        $(Build.Repository.Name)-latest
   - task: Docker@2
     displayName: Push Container
     inputs:
@@ -28,4 +28,4 @@ steps:
       repository: jamjon3/sgan
       command: push
       tags: |
-        $(containerPath)-$(Build.Repository.Name)-latest
+        (Build.Repository.Name)-latest
