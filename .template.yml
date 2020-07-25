@@ -16,16 +16,16 @@ steps:
     displayName: Build Container
     inputs:
       containerRegistry: 'dh_registry'
-      repository: jamjon3/$(containerPath)/$(Build.Repository.Name)
+      repository: jamjon3/sgan
       arguments: --network=host --build-arg DIGITALOCEAN_ACCESS_TOKEN=$(DIGITALOCEAN_ACCESS_TOKEN)
       command: 'build'
       tags: |
-        latest
+        $(containerPath)/$(Build.Repository.Name)/latest
   - task: Docker@2
     displayName: Push Container
     inputs:
       containerRegistry: 'dh_registry'
-      repository: jamjon3/$(containerPath)/$(Build.Repository.Name)
+      repository: jamjon3/sgan
       command: push
       tags: |
-        latest
+        $(containerPath)/$(Build.Repository.Name)/latest
