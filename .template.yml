@@ -11,6 +11,7 @@ steps:
     inputs:
       containerRegistry: 'dh_registry'
       command: 'login'
+    displayName: Login to Registry
   - task: Docker@2
     displayName: Build Container
     inputs:
