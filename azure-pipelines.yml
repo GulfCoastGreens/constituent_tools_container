@@ -15,8 +15,9 @@ variables:
 resources:
   containers:
     - container: build
-      image: registry.apps.southerngreensactionnetwork.org/sgan/containers/doctl_container:latest
-      endpoint: sgan_registry
+      image: registry.gitlab.com/sgan/containers/core/jamjon3/doctl_container:latest
+      # image: registry.apps.southerngreensactionnetwork.org/sgan/containers/doctl_container:latest
+      endpoint: gl_registry
       options: --entrypoint="" --dns 8.8.8.8
       env:
         DIGITALOCEAN_ACCESS_TOKEN: $(DIGITALOCEAN_ACCESS_TOKEN)
