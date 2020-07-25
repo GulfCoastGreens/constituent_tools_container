@@ -16,7 +16,7 @@ steps:
     inputs:
       containerRegistry: 'sgan_registry'
       repository: $(containerPath)/$(Build.Repository.Name)
-      arguments: --dns 8.8.8.8 --build-arg DIGITALOCEAN_ACCESS_TOKEN=$(DIGITALOCEAN_ACCESS_TOKEN)
+      arguments: --network=host --build-arg DIGITALOCEAN_ACCESS_TOKEN=$(DIGITALOCEAN_ACCESS_TOKEN)
       command: 'build'
       tags: |
         latest
