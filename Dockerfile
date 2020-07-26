@@ -14,4 +14,4 @@ RUN ln -s /usr/local/bin/docker-entrypoint.sh / # backwards compat
 WORKDIR /dist
 # RUN ls -all
 #CMD ["/dist/constituent_tools"]
-CMD ["bash"]
+CMD ["tail","-f","/dev/null"]
