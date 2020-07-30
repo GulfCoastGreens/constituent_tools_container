@@ -98,9 +98,9 @@ class ImportVoters:
                             str(voterfileinfo.date_time[2]).zfill(2),
                             str(voterfileinfo.date_time[0])
                         ])
-                    # for line in voterfile.open(county_file).readlines():
-                    #     if len(line.decode("utf-8").split("\t")) == 38:
-                    #         output.write(line)
+                    for line in voterfile.open(county_file).readlines():
+                        if len(line.decode("utf-8").split("\t")) == 38:
+                            output.write(line)
             # with open(("/data/voter_tmp.txt"), "r",encoding="utf-8") as output:
             #     reader = csv.DictReader(output,fieldnames=self._fields,delimiter="\t")
             #     with self._connection as conn:
