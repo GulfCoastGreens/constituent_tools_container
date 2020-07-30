@@ -1,14 +1,14 @@
-#!/bin/bash
-set -e
+    #!/bin/bash
+    set -e
 
-# if [ "$1" = 'postgres' ]; then
-#     chown -R postgres "$PGDATA"
+    # if [ "$1" = 'postgres' ]; then
+    #     chown -R postgres "$PGDATA"
 
-#     if [ -z "$(ls -A "$PGDATA")" ]; then
-#         gosu postgres initdb
-#     fi
+    #     if [ -z "$(ls -A "$PGDATA")" ]; then
+    #         gosu postgres initdb
+    #     fi
 
-#     exec gosu postgres "$@"
-# fi
+    #     exec gosu postgres "$@"
+    # fi
 
-exec /dist/constituent_tools "$@"
+    exec /dist/constituent_tools "$@"

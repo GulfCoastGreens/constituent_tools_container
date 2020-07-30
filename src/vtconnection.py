@@ -9,12 +9,13 @@ class vtconnection:
         print("Invoked Connection")
         self.setConnection()
     def setConnection(self):
+        print(os.getenv('PG_USER'))
         try:
             self._connection = psycopg2.connect(user = os.getenv('PG_USER'),
                                         password = os.getenv('PG_PASSWORD'),
                                         host = os.getenv('PG_HOST'),
                                         port = os.getenv('PG_PORT'),
-                                        database = os.getenv('usvoters'))
+                                        database = os.getenv('PG_DATABASE'))
 
             self._cursor = self._connection.cursor()
             # Print PostgreSQL Connection properties
