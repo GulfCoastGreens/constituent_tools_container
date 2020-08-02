@@ -10,7 +10,7 @@ RUN pyinstaller -F src/constituent_tools.py --add-data 'src/florida/sql/*.sql:fl
 # RUN ls /bin
 COPY docker-entrypoint.sh /usr/local/bin/
 RUN ln -s /usr/local/bin/docker-entrypoint.sh / # backwards compat
-# ENTRYPOINT ["docker-entrypoint.sh"]
+ENTRYPOINT ["docker-entrypoint.sh"]
 # ENTRYPOINT ["/bin/cp"]
 WORKDIR /dist
 # RUN ls -all
