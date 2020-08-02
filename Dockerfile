@@ -16,4 +16,4 @@ ENTRYPOINT ["docker-entrypoint.sh"]
 WORKDIR /dist
 # RUN ls -all
 #CMD ["/dist/constituent_tools"]
-CMD ["tail","-f","/dev/null"]
+#CMD ["tail","-f","/dev/null"]
